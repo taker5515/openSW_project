@@ -10,3 +10,5 @@ app = FastAPI()
 stock_model.Base.metadata.create_all(bind=engine)
 
 app.include_router(stock.router)
+
+print("a") #ㅇㅇㅇ
