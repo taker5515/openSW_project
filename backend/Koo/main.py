@@ -62,7 +62,10 @@ async def analyze_stock(request: StockRequest):
                 "reason": analysis['reason'],
                 "url": news['link']
             })
-            
+            print(f"--- 분석 결과: {request.ticker} ---")
+        for res in results:
+            print(f"제목: {res['title']}\n결과: {res['sentiment']}\n")
+
         return results # 최종 데이터를 JSON 리스트로 반환
 
     except Exception as e:
@@ -71,4 +74,4 @@ async def analyze_stock(request: StockRequest):
 # 4. 서버 실행 설정
 if __name__ == "__main__":
     # 포트는 팀원들과 상의 후 결정 (기본 8000 사용)
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8080)
