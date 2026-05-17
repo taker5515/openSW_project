@@ -12,3 +12,11 @@ class TokenResponse(BaseModel):
 class TokenPayload(BaseModel):
     sub: str
     exp: int
+
+class RegisterRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+class RegisterResponse(BaseModel):
+    id: int
+    email: str

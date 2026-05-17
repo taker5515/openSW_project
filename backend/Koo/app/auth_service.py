@@ -13,11 +13,11 @@ class AuthService:
         if not user or not verify_password(data.password, user.hashed_password):
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="ÀÌ¸ÞÀÏ ¶Ç´Â ºñ¹Ð¹øÈ£°¡ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù.",
+                detail="Invalid email or password.",
                 headers={"WWW-Authenticate": "Bearer"},
             )
         if not user.is_active:
-            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="ºñÈ°¼ºÈ­µÈ °èÁ¤ÀÔ´Ï´Ù.")
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="ï¿½ï¿½È°ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.")
         return TokenResponse(
             access_token=create_access_token(user.id),
             refresh_token=create_refresh_token(user.id),
