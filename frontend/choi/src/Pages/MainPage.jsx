@@ -22,7 +22,7 @@ function MainPage() {
           </p>
 
           <div className="buttons">
-            <button className="primary">뉴스 보러가기</button>
+           <Link to="/dashboard?tab=news" className="primary">뉴스 보러가기</Link>
             <Link to="/login" className="secondary">구독 시작</Link>
           </div>
         </section>
@@ -38,10 +38,10 @@ function MainPage() {
             <p>뉴스를 메일로 받아보기</p>
           </div>
 
-          <div className="card">
+          <Link to="/dashboard?tab=overview" className="card">
             <h3>빠른 정보</h3>
             <p>시장 흐름을 빠르게 파악</p>
-          </div>
+          </Link>
         </section>
       </main>
     </div>

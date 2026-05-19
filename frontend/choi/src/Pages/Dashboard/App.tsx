@@ -11,8 +11,8 @@ type Tab = "overview" | "news";
 
 export default function App() {
   const [tab, setTab] = useState<Tab>(
-  (new URLSearchParams(window.location.search).get("tab") as Tab) ?? "overview"
-);
+    (new URLSearchParams(window.location.search).get("tab") as Tab) ?? "overview"
+  );
   const [selectedTicker, setSelected] = useState("AAPL");
   const { watchlist, add, remove }    = useWatchlist();
   const { news, reanalyze }           = useNewsFeed();
@@ -29,17 +29,7 @@ export default function App() {
         <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700, fontSize: 15 }}>
           <Activity size={18} color="#3b82f6" /> StockAI
         </div>
-        <nav style={{ display: "flex", gap: 2, flex: 1 }}>
-          {(["overview", "news"] as Tab[]).map((t) => (
-            <button key={t} onClick={() => setTab(t)}
-              style={{ padding: "5px 14px", borderRadius: 6, border: "none",
-                background: tab === t ? "#0f1827" : "transparent",
-                color: tab === t ? "#60a5fa" : "#4b5563",
-                fontSize: 12, fontWeight: tab === t ? 600 : 400, cursor: "pointer" }}>
-              {t === "overview" ? "개요" : "뉴스 분석"}
-            </button>
-          ))}
-        </nav>
+
         <button onClick={toggle}
           style={{ background: "transparent", border: "1px solid #1e2130",
             borderRadius: 6, padding: "5px 9px", cursor: "pointer",
