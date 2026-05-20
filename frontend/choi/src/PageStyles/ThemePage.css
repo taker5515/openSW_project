@@ -30,6 +30,7 @@
   border: 1px solid #d1d5db;
   color: #111827;
   overflow: hidden;
+  position: relative;
 }
 
 .news-card h3 {
@@ -42,6 +43,16 @@
   margin: 0;
   font-size: 14px;
   line-height: 1.5;
+}
+
+.news-meta {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .good.level-1 {
