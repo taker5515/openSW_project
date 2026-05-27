@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, Text
 from sqlalchemy.sql import func
-from db.database import Base
+
+from db.base import Base
 
 
 class NewsItem(Base):

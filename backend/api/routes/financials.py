@@ -4,7 +4,7 @@ from external.financial_data_client import financial_data_client
 from services import financial_statement_service, financial_ratio_service
 from services import financial_analysis_service, financial_segment_service
 
-router = APIRouter(prefix="/financials", tags=["financials"])
+router = APIRouter(tags=["financials"])
 
 
 def _build_chart_data(income_data, balance_data, cashflow_data, ratios_data) -> dict:

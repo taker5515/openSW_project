@@ -4,7 +4,7 @@ from typing import List
 from schemas.watchlists import WatchItemResponse, AddWatchlistRequest, DeleteWatchlistResponse
 from services import watchlist_service
 
-router = APIRouter(prefix="/watchlist", tags=["watchlist"])
+router = APIRouter()
 
 
 @router.get("", response_model=List[WatchItemResponse])

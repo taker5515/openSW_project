@@ -4,7 +4,7 @@ from typing import List, Optional
 from schemas.news import NewsItemResponse, NewsListResponse
 from services import news_service
 
-router = APIRouter(prefix="/news", tags=["news"])
+router = APIRouter(tags=["news"])
 
 
 @router.get("", response_model=NewsListResponse)
