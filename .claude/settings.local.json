@@ -42,7 +42,11 @@
       "Bash(brew install *)",
       "Bash(export PATH=\"/opt/homebrew/bin:$PATH\")",
       "Bash(gh --version)",
-      "Bash(gh auth *)"
+      "Bash(gh auth *)",
+      "Bash(chmod +x *)",
+      "Bash(curl -s http://localhost:8000/)",
+      "Bash(curl -s \"http://localhost:8000/api/news\")",
+      "Bash(curl -s \"http://localhost:8000/api/ai/summary\")"
     ]
   }
 }
