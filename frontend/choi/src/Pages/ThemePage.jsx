@@ -43,88 +43,16 @@ function ThemePage() {
   const [newsList, setNewsList] = useState([]);
 
   useEffect(() => {
-    // 백엔드 연결 전 임시 데이터
-    const dummyNews = [
-
-      {
-        id: 1,
-        title: "테스트 bad4",
-        summary: "bad4 news를 테스트하기 위한 임시입니다.",
-        sentiment: "bad",
-        level: 4,
-        publishedAt: "2016-05-21T11:20:00",
-      },
-            {
-        id: 2,
-        title: "테스트 bad3",
-        summary: "bad3 news를 테스트하기 위한 임시입니다.",
-        sentiment: "bad",
-        level: 3,
-        publishedAt: "2025-05-21T11:20:00",
-      },
-      {
-        id: 3,
-        title: "테스트 bad2",
-        summary: "bad2 news를 테스트하기 위한 임시입니다.",
-        sentiment: "bad",
-        level: 2,
-        publishedAt: "2026-04-21T11:20:00",
-      },
-      {
-        id: 4,
-        title: "테스트 bad1",
-        summary: "bad1 news를 테스트하기 위한 임시입니다.",
-        sentiment: "bad",
-        level: 1,
-        publishedAt: "2026-05-20T23:02:00",
-      },
-      {
-        id: 5,
-        title: "테스트 good4",
-        summary: "good4 news를 테스트하기 위한 임시입니다.",
-        sentiment: "good",
-        level: 4,
-        publishedAt: "2026-05-20T23:20:00",
-      },
-      {
-        id: 6,
-        title: "테스트 good3",
-        summary: "good3 news를 테스트하기 위한 임시입니다.",
-        sentiment: "good",
-        level: 3,
-        publishedAt: "2026-05-21T00:20:00",
-      },
-      {
-        id: 7,
-        title: "테스트 good2",
-        summary: "good2 news를 테스트하기 위한 임시입니다.",
-        sentiment: "good",
-        level: 2,
-        publishedAt: "2026-05-21T01:49:00",
-      },  
-      {
-        id: 8,
-        title: "테스트 good1",
-        summary: "good1 news를 테스트하기 위한 임시입니다.",
-        sentiment: "good",
-        level: 1,
-        publishedAt: "2026-05-21T02:53:00",
-      },
-    ];
-
-    setNewsList(dummyNews);
-
-    /*
-    나중에 백엔드 연결 시 사용
-
     const fetchNews = async () => {
-      const response = await fetch(`백엔드주소/news?theme=${themeName}`);
-      const data = await response.json();
-      setNewsList(data.slice(0, 50));
+      try {
+        const res = await fetch(`/api/news?theme=${encodeURIComponent(themeName)}`);
+        const data = await res.json();
+        setNewsList((data.items || []).slice(0, 50));
+      } catch (err) {
+        console.error("뉴스 로딩 실패:", err);
+      }
     };
-
     fetchNews();
-    */
   }, [themeName]);
 
   return (
