@@ -10,7 +10,7 @@ from utils.financial_mappings import (
 from utils.financial_calculations import calc_growth, safe_round
 from utils.date import format_fiscal_date, get_period_label
 
-MAX_PERIODS = 4
+MAX_PERIODS = 5
 
 
 def normalize_income_statement(
