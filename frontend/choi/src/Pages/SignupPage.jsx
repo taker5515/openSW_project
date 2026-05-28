@@ -1,3 +1,5 @@
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../firebase"; 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../PageStyles/SignupPage.css";
@@ -11,8 +13,30 @@ function SignupPage() {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [agree, setAgree] = useState(false);
 
+  const handleGoogleLogin = async () => {
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+            const user = result.user;
+
+            console.log("구글 로그인 성공:", user);
+            alert(`${user.displayName}님 환영합니다!`);
+
+            navigate("/");
+            } catch (error) {
+            console.log("구글 로그인 에러 코드:", error.code);
+
+            if (
+                error.code === "auth/popup-closed-by-user" ||
+                error.code === "auth/cancelled-popup-request"
+            ) {
+                return;
+            }
+
+            alert(`구글 로그인 실패: ${error.code}`);
+            }
+        };
   const handleSubmit = (e) => {
-    e.preventDefault();
+            e.preventDefault();
 
     if (
       !name ||
@@ -101,6 +125,13 @@ function SignupPage() {
 
             <button className="signup-submit" type="submit">
               회원가입
+            </button>
+            <button
+            type="button"
+            className="google-signup-btn"
+            onClick={handleGoogleLogin}
+            >
+                Google로 회원가입
             </button>
           </form>
         </div>
