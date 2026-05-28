@@ -59,22 +59,40 @@ function NewsPage() {
         </section>
 
         <section className="news-layout">
-          <article className="ai-summary-box">
-            <h3>AI 뉴스 요약</h3>
-            <p>
-              이 영역에는 뉴스 내용을 투자 관점에서 AI가 요약한 내용이 들어갑니다.
-              향후 백엔드에서 받아온 요약 데이터를 표시하면 됩니다.
-            </p>
-
-            <button
+          {/* 왼쪽 열 */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
+            <article className="ai-summary-box">
+              <h3>AI 뉴스 요약</h3>
+              <p>
+                이 영역에는 뉴스 내용을 투자 관점에서 AI가 요약한 내용이 들어갑니다.
+                향후 백엔드에서 받아온 요약 데이터를 표시하면 됩니다.
+              </p>
+              <button
                 className="news-url-button"
                 /*onClick={() =>
-                    window.open("https://www.naver.com", "_blank")
+                  window.open("https://www.naver.com", "_blank")
                 }*/
-            >
-                뉴스 URL   
-                </button>
-          </article>
+              >
+                뉴스 URL
+              </button>
+            </article>
+
+    <article className="ai-summary-box">
+      <h3>AI 차트 분석</h3>
+      <p>
+        이 영역에는 관련 종목의 주식 차트 분석 내용이 들어갑니다.
+      </p>
+      <button
+        className="news-url-button"
+        onClick={() => window.location.href = "/dashboard?tab=overview"}
+      >
+        종목 차트 보기
+      </button>
+    </article>
+  </div>
+
+  {/* 오른쪽 열 */}
+
 
           <aside className="finance-section">
             <div className="finance-table-box">

@@ -5,9 +5,9 @@ import { genChartData } from "../utils/mockData";
 
 function MetricCard({ label, value }: { label: string; value: string }) {
   return (
-    <div style={{ background: "#0a0c14", borderRadius: 8, padding: "10px 14px", border: "1px solid #0e1118" }}>
-      <div style={{ fontSize: 11, color: "#4b5563", marginBottom: 3 }}>{label}</div>
-      <div style={{ fontSize: 14, fontWeight: 700, color: "#c4cdd8", fontFamily: "monospace" }}>{value}</div>
+    <div style={{ background: "#f1f5f9", borderRadius: 8, padding: "10px 14px", border: "1px solid #e2e8f0" }}>
+      <div style={{ fontSize: 11, color: "#64748b", marginBottom: 3 }}>{label}</div>
+      <div style={{ fontSize: 14, fontWeight: 700, color: "#0f172a", fontFamily: "monospace" }}>{value}</div>
     </div>
   );
 }
@@ -46,15 +46,15 @@ export function StockChart({ item }: { item: WatchItem }) {
   return (
     <div>
       <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 16 }}>
-        <span style={{ fontSize: 28, fontWeight: 700, color: "#e2e8f0", fontFamily: "monospace" }}>
+        <span style={{ fontSize: 28, fontWeight: 700, color: "#0f172a", fontFamily: "monospace" }}>
           ${item.price.toFixed(2)}
         </span>
         <span style={{ fontSize: 15, fontWeight: 600, color, fontFamily: "monospace" }}>
           {positive ? "+" : ""}{item.change.toFixed(2)} ({positive ? "+" : ""}{item.changePct.toFixed(2)}%)
         </span>
-        <span style={{ fontSize: 12, color: "#4b5563" }}>{item.ticker} · 오늘</span>
+        <span style={{ fontSize: 12, color: "#64748b" }}>{item.ticker} · 오늘</span>
       </div>
-      <div style={{ background: "#0a0c14", borderRadius: 10, padding: "16px 16px 8px", border: "1px solid #0e1118" }}>
+      <div style={{ background: "#f1f5f9", borderRadius: 10, padding: "16px 16px 8px", border: "1px solid #e2e8f0" }}>
         <ResponsiveContainer width="100%" height={260}>
           <AreaChart data={chartData}>
             <defs>
@@ -63,10 +63,10 @@ export function StockChart({ item }: { item: WatchItem }) {
                 <stop offset="100%" stopColor={color} stopOpacity={0} />
               </linearGradient>
             </defs>
-            <XAxis dataKey="time" tick={{ fill: "#374151", fontSize: 10 }} tickLine={false} axisLine={false} interval={9} />
-            <YAxis tick={{ fill: "#374151", fontSize: 10 }} tickLine={false} axisLine={false} width={52}
+            <XAxis dataKey="time" tick={{ fill: "#94a3b8", fontSize: 10 }} tickLine={false} axisLine={false} interval={9} />
+            <YAxis tick={{ fill: "#94a3b8", fontSize: 10 }} tickLine={false} axisLine={false} width={52}
               tickFormatter={(v) => `$${v.toFixed(0)}`} domain={["auto", "auto"]} />
-            <Tooltip contentStyle={{ background: "#0f1117", border: "1px solid #1e2130", borderRadius: 8, fontSize: 12 }}
+            <Tooltip contentStyle={{ background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: 8, fontSize: 12 }}
              formatter={(v: unknown) => [`$${(v as number).toFixed(2)}`, "가격"]} />
             <Area type="monotone" dataKey="price" stroke={color} strokeWidth={1.5} fill="url(#cg)" dot={false} />
           </AreaChart>

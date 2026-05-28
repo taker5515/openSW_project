@@ -23,8 +23,8 @@ function WatchRow({ item, selected, onSelect, onRemove }: {
   return (
     <div onClick={onSelect}
       style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 14px",
-        borderBottom: "1px solid #080a10", cursor: "pointer",
-        background: selected ? "#0a1020" : "transparent" }}>
+        borderBottom: "1px solid #f1f5f9", cursor: "pointer",
+        background: selected ? "#eff6ff" : "transparent" }}>
       <div style={{ flex: 1 }}>
         <div style={{ fontSize: 13, fontWeight: 700, color: "#e2e8f0", fontFamily: "monospace" }}>{item.ticker}</div>
         <div style={{ fontSize: 10, color: "#4b5563" }}>{item.name}</div>
@@ -60,11 +60,11 @@ export function Watchlist({ items, selectedTicker, onSelect, onAdd, onRemove }: 
   };
 
   return (
-    <div style={{ background: "#0a0c14", borderRadius: 10, border: "1px solid #0e1118", overflow: "hidden" }}>
-      <div style={{ padding: "12px 14px", borderBottom: "1px solid #0e1118",
+    <div style={{ background: "#ffffff", borderRadius: 10, border: "1px solid #e2e8f0", overflow: "hidden" }}>
+      <div style={{ padding: "12px 14px", borderBottom: "1px solid #e2e8f0",
         display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span style={{ fontSize: 12, fontWeight: 600, color: "#94a3b8" }}>관심종목</span>
-        <span style={{ fontSize: 10, color: "#374151" }}>실시간</span>
+        <span style={{ fontSize: 12, fontWeight: 600, color: "#0f172a" }}>관심종목</span>
+        <span style={{ fontSize: 10, color: "#94a3b8" }}>실시간</span>
       </div>
       {items.map((item) => (
         <WatchRow key={item.ticker} item={item}
@@ -76,8 +76,8 @@ export function Watchlist({ items, selectedTicker, onSelect, onAdd, onRemove }: 
         <input value={input} onChange={(e) => setInput(e.target.value.toUpperCase())}
           onKeyDown={(e) => e.key === "Enter" && submit()}
           placeholder="티커 추가 (예: AMZN)"
-          style={{ flex: 1, background: "#06080e", border: "1px solid #1e2130", borderRadius: 6,
-            padding: "6px 10px", color: "#e2e8f0", fontSize: 12, outline: "none",
+          style={{ flex: 1, background: "#f8fafc", border: "1px solid #1e2130", borderRadius: 6,
+            padding: "6px 10px", color: "#0f172a", fontSize: 12, outline: "none",
             fontFamily: "monospace" }} />
         <button onClick={submit}
           style={{ background: "#1d4ed8", border: "none", borderRadius: 6,
