@@ -17,7 +17,7 @@
 
 .logo {
   justify-self: start;
-  font-size: 20px;
+  font-size: 20px;  
   font-weight: 700;
   color: #111827;
 }
@@ -44,4 +44,42 @@
   border: none;
   font-size: 14px;
   font-weight: 600;
+}
+
+@media (max-width: 740px) {
+  .header {
+    height: auto;
+  }
+
+  .header-inner {
+    padding: 12px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .logo {
+    font-size: 16px;
+    line-height: 1.2;
+    min-width: 70px;
+  }
+
+  .nav {
+    gap: 18px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav a {
+    font-size: 12px;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .login-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
 }

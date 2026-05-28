@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../Components/Header";
+import { useNavigate } from "react-router-dom";
 import "../PageStyles/ThemePage.css";
+
 
 const themeNameMap = {
   "tech&media": "기술/미디어",
@@ -35,6 +37,8 @@ const formatTimeAgo = (dateString) => {
 function ThemePage() {
   const { themeName } = useParams();
   const currentTheme = themeNameMap[themeName] || themeName;
+
+  const navigate = useNavigate();
 
   const [newsList, setNewsList] = useState([]);
 
@@ -140,6 +144,7 @@ function ThemePage() {
               <article
                 key={news.id}
                 className={`news-card ${news.sentiment} level-${news.level}`}
+                onClick={() => navigate(`/news/${news.id}`)}
               >
                 <div className="news-meta">
                   <span>{formatTimeAgo(news.publishedAt)}</span>
