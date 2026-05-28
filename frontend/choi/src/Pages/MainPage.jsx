@@ -23,7 +23,6 @@ function MainPage() {
 
           <div className="buttons">
             <button className="primary">뉴스 보러가기</button>
-            <Link to="/login" className="secondary">구독 시작</Link>
           </div>
         </section>
 
