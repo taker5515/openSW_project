@@ -21,16 +21,13 @@ function MainPage() {
             쉽고 빠르게 확인할 수 있습니다.
           </p>
 
-          <div className="buttons">
-           <Link to="/dashboard?tab=news" className="primary">뉴스 보러가기</Link>
-            <Link to="/login" className="secondary">구독 시작</Link>
-          </div>
+      
         </section>
 
         <section className="cards">
           <Link to="/theme" className="card">
-            <h3>테마별 뉴스</h3>
-            <p>원하는 테마 뉴스만 모아서 제공</p>
+            <h3>전체 뉴스</h3>
+            <p>최신 뉴스를 한눈에</p>
           </Link>
 
           <div className="card">

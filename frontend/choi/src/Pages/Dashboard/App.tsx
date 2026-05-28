@@ -27,7 +27,7 @@ export default function App() {
         display: "flex", alignItems: "center", padding: "0 24px", gap: 16,
         position: "sticky", top: 0, zIndex: 100 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700, fontSize: 15 }}>
-          <Activity size={18} color="#3b82f6" /> StockAI
+          <Activity size={18} color="#3b82f6" /> Stock Newsletter
         </div>
 
         <button onClick={toggle}

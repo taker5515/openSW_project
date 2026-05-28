@@ -1,73 +1,163 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Header from "../Components/Header";
+import { useNavigate } from "react-router-dom";
+import "../PageStyles/ThemePage.css";
 
-const themeNews = {
-  AI: [
-    { id: 1, title: "NVIDIA, AI 칩 수요 급증으로 시가총액 2조 달러 돌파", source: "Reuters", time: "2분 전", ticker: "NVDA" },
-    { id: 2, title: "OpenAI, GPT-5 출시 임박...AI 시장 판도 변화 예고", source: "Bloomberg", time: "15분 전", ticker: "MSFT" },
-    { id: 3, title: "구글 딥마인드, 신약 개발 AI 모델 공개", source: "TechCrunch", time: "1시간 전", ticker: "GOOGL" },
-  ],
-  반도체: [
-    { id: 4, title: "삼성전자, HBM4 양산 성공...SK하이닉스와 격차 줄여", source: "한국경제", time: "5분 전", ticker: "005930" },
-    { id: 5, title: "TSMC, 2nm 공정 수율 개선...애플 독점 공급 유력", source: "DigiTimes", time: "30분 전", ticker: "TSM" },
-    { id: 6, title: "인텔, 파운드리 사업 분사 공식화", source: "WSJ", time: "2시간 전", ticker: "INTC" },
-  ],
-  전기차: [
-    { id: 7, title: "테슬라, 중국 시장 점유율 회복...BYD와 치열한 경쟁", source: "Reuters", time: "10분 전", ticker: "TSLA" },
-    { id: 8, title: "현대차, 美 전기차 보조금 혜택 확대 수혜", source: "연합뉴스", time: "45분 전", ticker: "005380" },
-    { id: 9, title: "BYD, 유럽 시장 공략 가속...관세 장벽 우회 전략", source: "FT", time: "3시간 전", ticker: "BYDDY" },
-  ],
-  바이오: [
-    { id: 10, title: "삼성바이오로직스, 글로벌 CMO 수주 역대 최대", source: "바이오스펙테이터", time: "20분 전", ticker: "207940" },
-    { id: 11, title: "셀트리온, 자가면역 치료제 FDA 승인 획득", source: "메디파나", time: "2시간 전", ticker: "068270" },
-    { id: 12, title: "한미약품, 비만치료제 임상 3상 진입", source: "팜뉴스", time: "4시간 전", ticker: "128940" },
-  ],
-  금융: [
-    { id: 13, title: "Fed, 금리 동결 유지...연내 인하 가능성 시사", source: "WSJ", time: "1시간 전", ticker: "JPM" },
-    { id: 14, title: "카카오뱅크, 기업대출 확대로 순이익 급증", source: "이데일리", time: "3시간 전", ticker: "323410" },
-    { id: 15, title: "토스, 기업공개 본격화...기업가치 20조 목표", source: "한국경제", time: "5시간 전", ticker: "TOSS" },
-  ],
+
+const themeNameMap = {
+  "tech&media": "기술/미디어",
+  "consumer&life": "소비/생활",
+  "industry&energy&realEstate": "산업/에너지/부동산",
+  "finance": "금융",
+  "HC&pub": "헬스케어/공공",
 };
 
-const themes = ["AI", "반도체", "전기차", "바이오", "금융"];
+const formatTimeAgo = (dateString) => {
+  const now = new Date();
+  const past = new Date(dateString);
 
-export default function ThemePage() {
+  const diff = Math.floor((now - past) / 1000);
+
+  if (diff < 60) {
+    return `${diff}초 전`;
+  }
+
+  if (diff < 3600) {
+    return `${Math.floor(diff / 60)}분 전`;
+  }
+
+  if (diff < 86400) {
+    return `${Math.floor(diff / 3600)}시간 전`;
+  }
+
+  return `${Math.floor(diff / 86400)}일 전`;
+};
+
+function ThemePage() {
+  const { themeName } = useParams();
+  const currentTheme = themeNameMap[themeName] || themeName;
+
+  const navigate = useNavigate();
+
+  const [newsList, setNewsList] = useState([]);
+
+  useEffect(() => {
+    // 백엔드 연결 전 임시 데이터
+    const dummyNews = [
+
+      {
+        id: 1,
+        title: "테스트 bad4",
+        summary: "bad4 news를 테스트하기 위한 임시입니다.",
+        sentiment: "bad",
+        level: 4,
+        publishedAt: "2016-05-21T11:20:00",
+      },
+            {
+        id: 2,
+        title: "테스트 bad3",
+        summary: "bad3 news를 테스트하기 위한 임시입니다.",
+        sentiment: "bad",
+        level: 3,
+        publishedAt: "2025-05-21T11:20:00",
+      },
+      {
+        id: 3,
+        title: "테스트 bad2",
+        summary: "bad2 news를 테스트하기 위한 임시입니다.",
+        sentiment: "bad",
+        level: 2,
+        publishedAt: "2026-04-21T11:20:00",
+      },
+      {
+        id: 4,
+        title: "테스트 bad1",
+        summary: "bad1 news를 테스트하기 위한 임시입니다.",
+        sentiment: "bad",
+        level: 1,
+        publishedAt: "2026-05-20T23:02:00",
+      },
+      {
+        id: 5,
+        title: "테스트 good4",
+        summary: "good4 news를 테스트하기 위한 임시입니다.",
+        sentiment: "good",
+        level: 4,
+        publishedAt: "2026-05-20T23:20:00",
+      },
+      {
+        id: 6,
+        title: "테스트 good3",
+        summary: "good3 news를 테스트하기 위한 임시입니다.",
+        sentiment: "good",
+        level: 3,
+        publishedAt: "2026-05-21T00:20:00",
+      },
+      {
+        id: 7,
+        title: "테스트 good2",
+        summary: "good2 news를 테스트하기 위한 임시입니다.",
+        sentiment: "good",
+        level: 2,
+        publishedAt: "2026-05-21T01:49:00",
+      },  
+      {
+        id: 8,
+        title: "테스트 good1",
+        summary: "good1 news를 테스트하기 위한 임시입니다.",
+        sentiment: "good",
+        level: 1,
+        publishedAt: "2026-05-21T02:53:00",
+      },
+    ];
+
+    setNewsList(dummyNews);
+
+    /*
+    나중에 백엔드 연결 시 사용
+
+    const fetchNews = async () => {
+      const response = await fetch(`백엔드주소/news?theme=${themeName}`);
+      const data = await response.json();
+      setNewsList(data.slice(0, 50));
+    };
+
+    fetchNews();
+    */
+  }, [themeName]);
+
   return (
-    <div style={{ minHeight: "100vh", background: "#f8fafc", fontFamily: "'Inter', 'Segoe UI', sans-serif" }}>
+    <div>
       <Header />
-      <main style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
-          {themes.map((theme) => (
-            <div key={theme}>
-              {/* 테마 제목 */}
-              <h2 style={{ fontSize: 15, fontWeight: 700, color: "#0f172a",
-                marginBottom: 12, paddingBottom: 8, borderBottom: "2px solid #3b82f6" }}>
-                {theme}
-              </h2>
-              {/* 뉴스 카드 목록 */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {themeNews[theme].map((item) => (
-                  <Link to={`/news/${item.id}`} key={item.id}
-                    style={{ background: "#fff", border: "1px solid #e2e8f0",
-                      borderRadius: 10, padding: "12px 14px", textDecoration: "none",
-                      color: "inherit", display: "block" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
-                      <span style={{ fontSize: 10, fontWeight: 700, color: "#3b82f6",
-                        background: "#eff6ff", borderRadius: 4, padding: "2px 6px" }}>
-                        {item.ticker}
-                      </span>
-                      <span style={{ fontSize: 10, color: "#94a3b8" }}>{item.source} · {item.time}</span>
-                    </div>
-                    <p style={{ fontSize: 13, fontWeight: 600, color: "#0f172a", margin: 0, lineHeight: 1.5 }}>
-                      {item.title}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+
+      <main className="theme-page">
+        <section className="theme-title-area">
+          <h2>{currentTheme}</h2>
+        </section>
+
+        {newsList.length === 0 ? (
+          <div className="empty-news">관련 뉴스가 없습니다.</div>
+        ) : (
+          <section className="news-grid">
+            {newsList.slice(0, 50).map((news) => (
+              <article
+                key={news.id}
+                className={`news-card ${news.sentiment} level-${news.level}`}
+                onClick={() => navigate(`/news/${news.id}`)}
+              >
+                <div className="news-meta">
+                  <span>{formatTimeAgo(news.publishedAt)}</span>
+                </div>
+                <h3>{news.title}</h3>
+                <p>{news.summary}</p>
+              </article>
+            ))}
+          </section>
+        )}
       </main>
     </div>
   );
 }
+
+export default ThemePage;

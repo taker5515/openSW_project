@@ -10,11 +10,11 @@ function Header() {
         </Link>
 
         <nav className="nav">
-          <Link to="/theme/AI">AI</Link>
-          <Link to="/theme/semiconductor">반도체</Link>
-          <Link to="/theme/ev">전기차</Link>
-          <Link to="/theme/bio">바이오</Link>
+          <Link to="/theme/tech&media">기술/미디어</Link>
+          <Link to="/theme/consumer&life">소비/생활</Link>
+          <Link to="/theme/industry&energy&realEstate">산업/에너지/부동산</Link>
           <Link to="/theme/finance">금융</Link>
+          <Link to="/theme/HC&pub">헬스케어/공공</Link>
         </nav>
 
         <Link to="/login" className="login-btn">
