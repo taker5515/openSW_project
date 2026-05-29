@@ -1,13 +1,16 @@
 .news-page {
   width: 100%;
-  min-height: calc(100vh - 80px);
+  height: calc(100vh - 52px);
+  overflow: hidden;
   background-color: #f8fafc;
-  padding: 70px 48px 100px;
+  padding: 24px 48px 16px;
   color: #111827;
+  display: flex;
+  flex-direction: column;
 }
 
 .news-title-area {
-  margin-bottom: 40px;
+  margin-bottom: 16px;
 }
 
 .news-title-area h2 {
@@ -22,12 +25,23 @@
   display: grid;
   grid-template-columns: 1.25fr 1fr;
   gap: 36px;
-  align-items: start;
+  align-items: stretch;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* 왼쪽 열 */
+.left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
 }
 
 .ai-summary-box {
-  min-height: 620px;
-  padding: 56px 64px;
+  flex: 1;
+  min-height: 0;
+  padding: 28px 40px;
   background-color: #ffffff;
   border: 2px solid #111827;
   border-radius: 90px;
@@ -37,7 +51,7 @@
 .ai-summary-box h3,
 .finance-summary-box h3 {
   font-size: 22px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .ai-summary-box p,
@@ -48,8 +62,8 @@
 
 .news-url-button {
   position: absolute;
-  right: 60px;
-  bottom: 42px;
+  right: 40px;
+  bottom: 28px;
   padding: 14px 22px;
   border-radius: 10px;
   font-weight: 700;
@@ -60,10 +74,12 @@
   cursor: pointer;
 }
 
+/* 오른쪽 열 */
 .finance-section {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 16px;
+  overflow-y: auto;
 }
 
 .finance-table-box {
@@ -108,14 +124,13 @@
 }
 
 .finance-summary-box {
-  min-height: 260px;
   background-color: #ffffff;
   border-bottom: 4px solid #111827;
-  padding: 32px;
+  padding: 24px 32px;
 }
 
 .notice-text {
-  margin: 36px 0 28px;
+  margin: 12px 0 8px;
   text-align: center;
   color: #9ca3af;
   font-size: 15px;
@@ -125,10 +140,11 @@
 .feedback-section {
   max-width: 620px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .feedback-labels {
-  display: grid;   
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 6px;
   font-size: 14px;
@@ -172,58 +188,42 @@
 }
 
 @media (max-width: 1200px) {
+  .news-page {
+    height: auto;
+    overflow: visible;
+    padding: 32px 24px 60px;
+  }
   .news-layout {
     grid-template-columns: 1fr;
+    flex: unset;
+    overflow: visible;
   }
-
   .ai-summary-box {
-    min-height: 500px;
+    flex: unset;
+    min-height: 400px;
+  }
+  .finance-section {
+    overflow-y: visible;
   }
 }
 
 @media (max-width: 768px) {
   .news-page {
-    padding: 48px 24px 80px;
+    padding: 24px 16px 48px;
   }
-
   .news-title-area h2 {
     font-size: 24px;
   }
-
   .ai-summary-box {
-    min-height: 420px;
-    padding: 36px 28px 90px;
+    min-height: 320px;
+    padding: 28px 24px 80px;
     border-radius: 48px;
   }
-
   .news-url-button {
-    right: 28px;
-    bottom: 32px;
+    right: 24px;
+    bottom: 24px;
   }
-
-  .finance-summary-box {
-    min-height: 220px;
-  }
-
   .feedback-section {
     width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .news-page {
-    padding: 36px 18px 70px;
-  }
-
-  .ai-summary-box {
-    border-radius: 32px;
-  }
-
-  .feedback-labels {
-    font-size: 12px;
-  }
-
-  .feedback-bar {
-    height: 44px;
   }
 }
