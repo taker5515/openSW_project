@@ -2,7 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from core.config import settings
-from api.routes import health, financials, stocks, watchlists, news, ai, feedback
+from db.database import Base, engine
+import models.user  # noqa: F401 — User 테이블을 Base에 등록
+from api.routes import health, financials, stocks, watchlists, news, ai, feedback, auth, users
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -25,6 +29,8 @@ app.include_router(watchlists.router, prefix="/api")
 app.include_router(news.router, prefix="/api")
 app.include_router(ai.router, prefix="/api")
 app.include_router(feedback.router, prefix="/api")
+app.include_router(auth.router, prefix="/api")
+app.include_router(users.router, prefix="/api")
 
 
 @app.get("/")

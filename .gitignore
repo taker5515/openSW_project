@@ -1,2 +1,15 @@
 node_modules
 **/node_modules
+
+# Python
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Database
+backend/app.db
+
+# Environment secrets
+backend/.env
+.env
