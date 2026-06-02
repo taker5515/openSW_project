@@ -36,18 +36,21 @@ const formatTimeAgo = (dateString) => {
 
 function ThemePage() {
   const { themeName } = useParams();
-  const currentTheme = themeNameMap[themeName] || themeName;
+  const currentTheme = themeName
+    ? themeNameMap[themeName] || themeName
+    : "전체 뉴스";
 
   const navigate = useNavigate();
 
   const [newsList, setNewsList] = useState([]);
 
   useEffect(() => {
-    // 백엔드 연결 전 임시 데이터
+    // 백엔드 연결 전 임시 데이터 
     const dummyNews = [
 
       {
         id: 1,
+        theme: "금융",
         title: "테스트 bad4",
         summary: "bad4 news를 테스트하기 위한 임시입니다.",
         sentiment: "bad",
@@ -56,6 +59,7 @@ function ThemePage() {
       },
             {
         id: 2,
+        theme: "기술/미디어",
         title: "테스트 bad3",
         summary: "bad3 news를 테스트하기 위한 임시입니다.",
         sentiment: "bad",
@@ -64,6 +68,7 @@ function ThemePage() {
       },
       {
         id: 3,
+        theme: "소비/생활",
         title: "테스트 bad2",
         summary: "bad2 news를 테스트하기 위한 임시입니다.",
         sentiment: "bad",
@@ -72,6 +77,7 @@ function ThemePage() {
       },
       {
         id: 4,
+        theme: "산업/에너지/부동산",
         title: "테스트 bad1",
         summary: "bad1 news를 테스트하기 위한 임시입니다.",
         sentiment: "bad",
@@ -80,6 +86,7 @@ function ThemePage() {
       },
       {
         id: 5,
+        theme: "헬스케어/공공",
         title: "테스트 good4",
         summary: "good4 news를 테스트하기 위한 임시입니다.",
         sentiment: "good",
@@ -88,6 +95,7 @@ function ThemePage() {
       },
       {
         id: 6,
+        theme: "금융",
         title: "테스트 good3",
         summary: "good3 news를 테스트하기 위한 임시입니다.",
         sentiment: "good",
@@ -96,6 +104,7 @@ function ThemePage() {
       },
       {
         id: 7,
+        theme: "금융",
         title: "테스트 good2",
         summary: "good2 news를 테스트하기 위한 임시입니다.",
         sentiment: "good",
@@ -104,6 +113,7 @@ function ThemePage() {
       },  
       {
         id: 8,
+        theme: "금융",
         title: "테스트 good1",
         summary: "good1 news를 테스트하기 위한 임시입니다.",
         sentiment: "good",
@@ -112,7 +122,11 @@ function ThemePage() {
       },
     ];
 
-    setNewsList(dummyNews);
+    const filteredNews = themeName
+      ? dummyNews.filter((news) => news.theme === currentTheme)
+      : dummyNews;
+
+    setNewsList(filteredNews);
 
     /*
     나중에 백엔드 연결 시 사용

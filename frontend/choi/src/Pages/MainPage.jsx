@@ -27,15 +27,15 @@ function MainPage() {
         </section>
 
         <section className="cards">
-          <div className="card">
+          <Link to="/theme" className="card">
             <h3>테마별 뉴스</h3>
             <p>원하는 테마 뉴스만 모아서 제공</p>
-          </div>
+          </Link>
 
-          <div className="card">
+          <Link to="/login" className="card">
             <h3>이메일 구독</h3>
             <p>뉴스를 메일로 받아보기</p>
-          </div>
+          </Link>   
 
           <div className="card">
             <h3>빠른 정보</h3>
