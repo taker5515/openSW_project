@@ -36,7 +36,9 @@ const formatTimeAgo = (dateString) => {
 
 function ThemePage() {
   const { themeName } = useParams();
-  const currentTheme = themeNameMap[themeName] || themeName;
+  const currentTheme = themeName
+    ? themeNameMap[themeName] || themeName
+    : "전체 뉴스";
 
   const navigate = useNavigate();
 
