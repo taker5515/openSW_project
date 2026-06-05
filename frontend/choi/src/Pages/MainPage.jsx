@@ -30,10 +30,10 @@ function MainPage() {
             <p>최신 뉴스를 한눈에</p>
           </Link>
 
-          <div className="card">
+          <Link to="/login" className="card">
             <h3>이메일 구독</h3>
             <p>뉴스를 메일로 받아보기</p>
-          </div>
+          </Link>   
 
           <Link to="/dashboard?tab=overview" className="card">
             <h3>빠른 정보</h3>

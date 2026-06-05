@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../PageStyles/Header.css";
 
 function Header() {
+  const [userEmail, setUserEmail] = useState(() => localStorage.getItem("user_email"));
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_email");
+    setUserEmail(null);
+    navigate("/");
+  };
+
   return (
     <header className="header">
       <div className="header-inner">
@@ -17,9 +28,15 @@ function Header() {
           <Link to="/theme/HC&pub">헬스케어/공공</Link>
         </nav>
 
-        <Link to="/login" className="login-btn">
-          로그인
-        </Link>
+        {userEmail ? (
+          <button className="login-btn" onClick={handleLogout}>
+            로그아웃
+          </button>
+        ) : (
+          <Link to="/login" className="login-btn">
+            로그인
+          </Link>
+        )}
       </div>
     </header>
   );

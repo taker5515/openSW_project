@@ -4,6 +4,7 @@ import LoginPage from "./Pages/LoginPage";
 import ThemePage from "./Pages/ThemePage";
 import Dashboard from "./Pages/Dashboard/App";
 import NewsPage from "./Pages/NewsPage";
+import SignupPage from "./Pages/SignupPage"; 
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Route path="/theme" element={<ThemePage />} />
         <Route path="/theme/:themeName" element={<ThemePage />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/news/:newsId" element={<NewsPage />} />
+        <Route path="/news/:id" element={<NewsPage />} />
+        <Route path="/signup" element={<SignupPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -227,3 +227,21 @@
     width: 100%;
   }
 }
+
+@media (max-width: 480px) {
+  .news-page {
+    padding: 36px 18px 70px;
+  }
+
+  .ai-summary-box {
+    border-radius: 32px;
+  }
+
+  .feedback-labels {
+    font-size: 12px;
+  }
+
+  .feedback-bar {
+    height: 44px;
+  }
+} 
