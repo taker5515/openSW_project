@@ -42,8 +42,6 @@ function ThemePage() {
 
   const navigate = useNavigate();
 
-  const navigate = useNavigate();
-
   const [newsList, setNewsList] = useState([]);
 
   useEffect(() => {
