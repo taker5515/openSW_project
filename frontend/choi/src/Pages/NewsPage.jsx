@@ -111,6 +111,7 @@ function NewsPage() {
         </section>
 
         <section className="news-layout">
+        <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
           <article className="ai-summary-box">
             <h3>AI 뉴스 요약</h3>
             <p>
@@ -124,6 +125,19 @@ function NewsPage() {
                 뉴스 URL
                 </button>
           </article>
+          <article className="ai-summary-box">
+            <h3>AI 차트 분석</h3>
+            <p>
+              이 영역에는 관련 종목의 주식 차트 분석 내용이 들어갑니다.
+            </p>
+            <button
+              className="news-url-button"
+              onClick={() => window.location.href = "/dashboard?tab=overview"}
+            >
+              종목 차트 보기
+            </button>
+          </article>
+        </div>
 
           <aside className="finance-section">
             <div className="finance-table-box">

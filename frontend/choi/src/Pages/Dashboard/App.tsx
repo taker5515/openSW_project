@@ -11,8 +11,8 @@ type Tab = "overview" | "news";
 
 export default function App() {
   const [tab, setTab] = useState<Tab>(
-  (new URLSearchParams(window.location.search).get("tab") as Tab) ?? "overview"
-);
+    (new URLSearchParams(window.location.search).get("tab") as Tab) ?? "overview"
+  );
   const [selectedTicker, setSelected] = useState("AAPL");
   const { watchlist, add, remove }    = useWatchlist();
   const { news, reanalyze }           = useNewsFeed();
@@ -21,29 +21,19 @@ export default function App() {
   const selectedItem = watchlist.find((w) => w.ticker === selectedTicker) ?? watchlist[0];
 
   return (
-    <div style={{ minHeight: "100vh", background: "#060810", color: "#e2e8f0",
-      fontFamily: "'Inter', 'Segoe UI', sans-serif" }}>
-      <header style={{ height: 52, background: "#07090f", borderBottom: "1px solid #0e1118",
-        display: "flex", alignItems: "center", padding: "0 24px", gap: 16,
-        position: "sticky", top: 0, zIndex: 100 }}>
+        <div style={{ minHeight: "100vh", background: "#f8fafc", color: "#0f172a",
+          fontFamily: "'Inter', 'Segoe UI', sans-serif" }}>
+          <header style={{ height: 52, background: "#ffffff", borderBottom: "1px solid #e2e8f0",
+            display: "flex", alignItems: "center", padding: "0 24px", gap: 16,
+            position: "sticky", top: 0, zIndex: 100 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700, fontSize: 15 }}>
-          <Activity size={18} color="#3b82f6" /> StockAI
+          <Activity size={18} color="#3b82f6" /> Stock Newsletter
         </div>
-        <nav style={{ display: "flex", gap: 2, flex: 1 }}>
-          {(["overview", "news"] as Tab[]).map((t) => (
-            <button key={t} onClick={() => setTab(t)}
-              style={{ padding: "5px 14px", borderRadius: 6, border: "none",
-                background: tab === t ? "#0f1827" : "transparent",
-                color: tab === t ? "#60a5fa" : "#4b5563",
-                fontSize: 12, fontWeight: tab === t ? 600 : 400, cursor: "pointer" }}>
-              {t === "overview" ? "개요" : "뉴스 분석"}
-            </button>
-          ))}
-        </nav>
+
         <button onClick={toggle}
           style={{ background: "transparent", border: "1px solid #1e2130",
             borderRadius: 6, padding: "5px 9px", cursor: "pointer",
-            color: enabled ? "#facc15" : "#4b5563" }}>
+            color: enabled ? "#f59e0b" : "#94a3b8" }}>
           {enabled ? <Bell size={15} /> : <BellOff size={15} />}
         </button>
       </header>
