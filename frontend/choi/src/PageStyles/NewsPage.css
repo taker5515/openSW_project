@@ -1,12 +1,15 @@
 .news-page {
   width: 100%;
-  height: calc(100vh - 52px);
+  min-height: calc(100vh - 52px);
+  height: auto;
+  overflow-x: hidden;
   overflow: hidden;
   background-color: #f8fafc;
-  padding: 24px 48px 16px;
+  padding: 20px 40px 8px;
   color: #111827;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .news-title-area {
@@ -27,7 +30,8 @@
   gap: 36px;
   align-items: stretch;
   flex: 1;
-  overflow: hidden;
+  min-width: 0;
+  overflow: visible;
 }
 
 /* 왼쪽 열 */
@@ -41,7 +45,7 @@
 .ai-summary-box {
   flex: 1;
   min-height: 0;
-  padding: 28px 40px;
+  padding: 24px 36px;
   background-color: #ffffff;
   border: 2px solid #111827;
   border-radius: 90px;

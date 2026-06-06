@@ -47,9 +47,15 @@ function ThemePage() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const res = await fetch(`/api/news?theme=${encodeURIComponent(themeName)}`);
+        const url = themeName
+          ? `/api/news?theme=${encodeURIComponent(themeName)}`
+          : "/api/news";
+
+        const res = await fetch(url);
         const data = await res.json();
-        setNewsList((data.items || []).slice(0, 50));
+
+        const items = Array.isArray(data) ? data : data.items || [];
+        setNewsList(items.slice(0, 50));
       } catch (err) {
         console.error("뉴스 로딩 실패:", err);
       }
